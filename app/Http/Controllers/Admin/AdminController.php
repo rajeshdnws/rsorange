@@ -137,7 +137,7 @@ class AdminController extends Controller
     {   
         try {
             $admin  = new Admin();
-            return view('backend.pages.admins.form', compact('admin'));
+            return view('admin.profile.admin', compact('admin'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
         }
