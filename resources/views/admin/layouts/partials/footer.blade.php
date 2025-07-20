@@ -1,4 +1,4 @@
-    <footer class="content-footer footer bg-footer-theme">
+    <footer class="content-footer footer bg-footer-theme py-2 bg-white">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-column">
                 <div class="mb-2 mb-md-0 text-center ">
                  Copyright ©
