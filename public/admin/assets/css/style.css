@@ -1,0 +1,6 @@
+.user-list{
+      height: 550px;
+}
+.user-list .table-light tr th, tbody tr td{
+text-align: center;
+}

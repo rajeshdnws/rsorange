@@ -10,15 +10,19 @@
                 <!-- Basic Layout -->
                 <div class="col-xxl">
                   <div class="card mb-12">
-                    <div class="card-header d-flex align-items-center justify-content-between">
+                    <!-- <div class="card-header d-flex align-items-center justify-content-between">
                     @include('admin.layouts.partials.messages')
 					  
-                    </div>
+                    </div> -->
 				
 			     <div class="card">
-				  
-                <h5 class="card-header">Admin user List</h5>
-                <div class="table-responsive text-nowrap">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h4 class="mb-0 card-header text-dark">Admin user List</h4>
+                      <a class="btn fs-5 p-0 mx-2" href="{{ route('admin.new') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-html="true" data-bs-original-title="Add New Admin">
+                        <i class="bi bi-person-add fs-3 text-dark"></i>
+                    </a>
+                    </div>
+                <div class="table-responsive user-list text-nowrap">
                   <table class="table">
                     <thead class="table-light">
                       <tr>
