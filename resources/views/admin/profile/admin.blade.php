@@ -15,7 +15,8 @@
                     <div class="bg-white rounded-1">
                         <div class="card">
                             <div class="card-header bg-dark">
-                                <span class="text-white h5 fw-normal">Create New User</span>
+                                <span class="text-white h5
+                                 fw-normal">Create New User</span>
                             </div>
                             <div>
                                 {{-- Display success message --}}
