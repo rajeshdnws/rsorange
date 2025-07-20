@@ -4,3 +4,15 @@
 .user-list .table-light tr th, tbody tr td{
 text-align: center;
 }
+.card-header {
+    padding: 1.1rem 1.1rem;
+}
+.password-field-icon {
+    float: right;
+    left: -10px;
+    top: -32px;
+    position: relative;
+    z-index: 4;
+    cursor: pointer;
+    font-size: 18px;
+}

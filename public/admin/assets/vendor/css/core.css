@@ -2141,12 +2141,6 @@ progress {
     -webkit-overflow-scrolling: touch;
   }
 }
-.form-label {
-  margin-bottom: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #566a7f;
-}
 
 .col-form-label {
   padding-top: calc(0.4375rem + 1px);
