@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AuthAdminController;
+use App\Http\Controllers\Admin\CmsPageController; 
 
 Route::prefix('admin')->group(function(){
 
@@ -20,6 +21,9 @@ Route::group(['middleware' => ['admin']],function(){
 
     
     Route::get('create-admin', [AdminController::class, 'create'])->name('create.admin');
+
+    // ✅ Add this CMS module route 
+    Route::resource('cms-pages', CmsPageController::class);
   
 });
 });
