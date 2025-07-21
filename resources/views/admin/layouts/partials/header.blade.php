@@ -53,12 +53,18 @@
                               <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
-                          @foreach($admins as $admin)
-                          <div class="flex-grow-1">
-                           <span class="fw-semibold d-block">{{ $admin->first_name }}</span>
-                         <small class="text-muted">Admin</small>
-                        </div>
-                           @endforeach
+                        @if(isset($admins) && count($admins) > 0)
+    @foreach($admins as $admin)
+        <div class="flex-grow-1">
+            <span class="fw-semibold d-block">{{ $admin->first_name }}</span>
+            <small class="text-muted">Admin</small>
+        </div>
+    @endforeach
+@else
+    <div class="flex-grow-1">
+        <span class="fw-semibold d-block">No admin found</span>
+    </div>
+@endif
                         </div>
                       </a>
                     </li>
