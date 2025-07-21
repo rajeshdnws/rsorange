@@ -16,7 +16,7 @@
                     </div> -->
 				
 			     <div class="card">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center rounded-top bg-list-header">
                       <h4 class="mb-0 card-header text-dark">Admin user List</h4>
                       <a class="btn fs-5 p-0 mx-2" href="{{ route('create.admin') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-html="true" data-bs-original-title="Add New Admin">
                         <i class="bi bi-person-add fs-3 text-dark"></i>
