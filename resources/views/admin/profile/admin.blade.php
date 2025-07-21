@@ -7,16 +7,16 @@
 @section('admin-content')
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin/</span> Create New Staff</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin/</span> Create New Add</h4>
     <div class="row">
         <!-- Basic Layout -->
         <div class="col-xxl">
             <div class="card mb-12">
-                <div class="bg-white p-4 mb-5">
                     <div class="bg-white rounded-1">
                         <div class="card">
                             <div class="card-header bg-dark">
-                                <span class="text-white h6 fw-normal">Create New Staff</span>
+                                <span class="text-white h5
+                                 fw-normal">Create New User</span>
                             </div>
                             <div>
                                 {{-- Display success message --}}
@@ -139,5 +139,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

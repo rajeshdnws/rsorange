@@ -2,5 +2,21 @@
       height: 550px;
 }
 .user-list .table-light tr th, tbody tr td{
-text-align: center;
+    text-align: center;
+    padding: 1rem;
+}
+.card-header {
+    padding: 1.1rem 1.1rem;
+}
+.password-field-icon {
+    float: right;
+    left: -10px;
+    top: -32px;
+    position: relative;
+    z-index: 4;
+    cursor: pointer;
+    font-size: 18px;
+}
+.bg-list-header{
+        background: antiquewhite;
 }

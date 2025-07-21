@@ -116,3 +116,77 @@ let menu, animate;
   // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
 })();
+
+// Add active class to the current menu item
+let currentUrl = window.location.href;
+let menuItems = document.querySelectorAll('.menu-item a');
+
+menuItems.forEach(item => {
+  if (item.href === currentUrl) {
+    item.classList.add('active');
+
+    let parent = item.closest('.menu-item');
+    if (parent) {
+      parent.classList.add('active');
+
+      let parentMenu = parent.closest('.menu-sub');
+      if (parentMenu) {
+        parentMenu.classList.add('show');
+
+        // Prevent dropdown from closing if clicked again
+        let dropdownToggle = parentMenu.previousElementSibling;
+        if (dropdownToggle && dropdownToggle.classList.contains('menu-toggle')) {
+          dropdownToggle.addEventListener('click', function (e) {
+            e.preventDefault(); // prevent default toggle behavior
+          });
+        }
+      }
+    }
+  }
+});
+
+
+
+// Add active class to the current submenu item in the sidebar
+// Loop through all submenu items
+let submenuItems = document.querySelectorAll('.menu-sub .menu-link');
+
+submenuItems.forEach(item => {
+  if (item.href === currentUrl) {
+    // ✅ Remove all active states from menu
+    document.querySelectorAll('.menu-link.active').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.menu-item.active').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.menu-sub.show').forEach(el => el.classList.remove('show'));
+
+    // ✅ Set active for current submenu item and its parent
+    item.classList.add('active');
+
+    let submenuItem = item.closest('.menu-item');
+    if (submenuItem) submenuItem.classList.add('active');
+
+    let submenu = submenuItem.closest('.menu-sub');
+    if (submenu) {
+      submenu.classList.add('show');
+
+      let topMenuItem = submenu.closest('.menu-item.has-sub');
+      if (topMenuItem) {
+        topMenuItem.classList.add('active');
+
+        // ✅ Change the main label to match the active submenu item
+        let newLabel = item.querySelector('div')?.textContent.trim();
+        let labelContainer = topMenuItem.querySelector('a.menu-link > div[data-i18n]');
+        if (labelContainer && newLabel) {
+          labelContainer.textContent = newLabel;
+        }
+
+        // ✅ Prevent collapse on clicking active dropdown
+        let toggle = topMenuItem.querySelector('.menu-toggle');
+        if (toggle) {
+          toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+          });
+        }
+      }
+    }
+  }
+});
