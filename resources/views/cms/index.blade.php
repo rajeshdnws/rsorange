@@ -3,8 +3,8 @@
 
 @section('admin-content')
 <div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">CMS/</span>All CMS Pages</h4>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <h4 class="fw-bold py-3"><span class="text-muted fw-light">CMS/</span>All CMS Pages</h4>
         <a href="{{ route('cms-pages.create') }}" class="btn add-page">+ Add New Page</a>
     </div>
 
