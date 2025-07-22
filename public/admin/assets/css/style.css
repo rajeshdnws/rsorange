@@ -20,3 +20,26 @@
 .bg-list-header{
         background: antiquewhite;
 }
+.cursor{
+       cursor: pointer;
+}
+
+.add-page {
+  border: 2px solid #fb8c24;
+  background-color: #fb8c24;
+  border-radius: 0.9em;
+  cursor: pointer;
+  padding: 0.4em 0.8em 0.4em 0.8em;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+  color: white;
+}
+
+.add-page:hover {
+  background-color: #faa85c;
+}
+.cms-table-header tr th, tbody tr td {
+    color: #eff4f8 !important;
+    font-weight: bold;
+    text-align: center;
+}

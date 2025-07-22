@@ -4,23 +4,23 @@
 @section('admin-content')
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>All CMS Pages</h2>
-        <a href="{{ route('cms-pages.create') }}" class="btn btn-success">+ Add New Page</a>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">CMS/</span>All CMS Pages</h4>
+        <a href="{{ route('cms-pages.create') }}" class="btn add-page">+ Add New Page</a>
     </div>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-
+     <div class="table-responsive rounded shadow">
     <table class="table table-bordered table-striped">
-        <thead class="table-dark">
+        <thead class="table-dark cms-table-header">
             <tr>
                 <th>#</th>
                 <th>Title</th>
                 <th>Alias</th>
                 <th>Status</th>
                 <th>Banner</th>
-                <th>Meta Title</th>
+                <th nowrap>Meta Title</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -54,9 +54,10 @@
 </td>
                 </tr>
             @empty
-                <tr><td colspan="7" class="text-center">No pages found.</td></tr>
+                <tr><td colspan="7" class="text-center text-dark">No pages found.</td></tr>
             @endforelse
         </tbody>
     </table>
+</div>
 </div>
 @endsection
