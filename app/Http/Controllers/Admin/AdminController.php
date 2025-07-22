@@ -12,7 +12,9 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.profile.dashboard');
+          $admins = admin::all();
+
+    return view('admin.profile.dashboard', compact('admins'));
     }
     public function editPassword(Request $request)
     {
@@ -136,8 +138,8 @@ class AdminController extends Controller
     public function create()
     {   
         try {
-            $admin  = new Admin();
-            return view('backend.pages.admins.form', compact('admin'));
+             $admins = admin::all();
+            return view('admin.profile.admin', compact('admins'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
         }
