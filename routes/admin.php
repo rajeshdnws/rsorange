@@ -12,7 +12,7 @@ Route::prefix('admin')->group(function(){
     Route::POST('logout',[AuthAdminController::class,'destroy'])->name('admin.logout');
 
 Route::group(['middleware' => ['admin']],function(){
-  Route::resource('user', AdminController::class);
+   Route::resource('user', AdminController::class);
    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
    Route::get('change-password', [AdminController::class, 'editPassword'])->name('edit.password');
    Route::put('change-password', [AdminController::class, 'updatePassword'])->name('update.password');
@@ -20,7 +20,7 @@ Route::group(['middleware' => ['admin']],function(){
    Route::put('profile-setting', [AdminController::class, 'updateProfile'])->name('update.profile');
 
     
-    Route::get('create-admin', [AdminController::class, 'create'])->name('create.admin');
+   // Route::get('create-admin', [AdminController::class, 'create'])->name('create.admin');
 
     // ✅ Add this CMS module route 
     Route::resource('cms-pages', CmsPageController::class);
