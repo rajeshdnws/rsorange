@@ -206,3 +206,5 @@ submenuItems.forEach(item => {
     document.querySelector('form').addEventListener('submit', function () {
         document.getElementById('content').value = document.getElementById('editor').innerHTML;
     });
+
+
