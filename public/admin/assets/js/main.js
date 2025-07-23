@@ -190,3 +190,18 @@ submenuItems.forEach(item => {
     }
   }
 });
+
+
+// TEXT BOX AREA CODE
+  function execCmd(command) {
+        document.execCommand(command, false, null);
+    }
+
+    function execCmdWithArg(command, arg) {
+        document.execCommand(command, false, arg);
+    }
+
+    // On form submit, transfer editor content to hidden input
+    document.querySelector('form').addEventListener('submit', function () {
+        document.getElementById('content').value = document.getElementById('editor').innerHTML;
+    });

@@ -9,6 +9,7 @@
     @include('admin.layouts.partials.styles')
     @yield('styles')
     @stack('css-style')
+    
 </head>
 
 <body>

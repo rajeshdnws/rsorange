@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +19,7 @@ class CmsPageController extends Controller
     public function index()
     {
          $pages = CmsPage::latest()->get();
-    return view('cms.index', compact('pages'));
+    return view('admin.cms.index', compact('pages'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CmsPageController extends Controller
      */
     public function create()
     {
-                return view('cms.create');
+        return view('admin.cms.create');
 
     }
 
@@ -69,7 +69,7 @@ class CmsPageController extends Controller
     public function edit($id)
     {
          $page = CmsPage::findOrFail($id);
-        return view('cms.edit', compact('page'));
+        return view('admin.cms.create', compact('page'));
     }
 
     /**

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\Helper;
 use App\Models\Admin;
+
 class AdminController extends Controller
 {
     public function dashboard()
@@ -138,8 +139,10 @@ class AdminController extends Controller
     public function create()
     {   
         try {
+
              $admins = admin::all();
-            return view('admin.profile.admin', compact('admins'));
+             $admin = null;
+            return view('admin.profile.admin', compact('admins','admin'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
         }
@@ -189,9 +192,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Module $admin)
+    public function show(Admin $admin)
     {
-        return redirect()->back()->with(['error' => trans('message.something_wrong')]);
+        return redirect()->back()->with(['error' => trans('Something wents wrong')]);
     }
 
     /**
@@ -205,9 +208,10 @@ class AdminController extends Controller
 	
         try {
 			$admin= Admin::whereId($id)->first();
+
             return view('admin.profile.admin', compact('admin'));
         } catch (Exception $e) {
-            return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
+            return redirect()->back()->with(['error' => trans('Something wents wrong')]); 
         }
     }
 
@@ -242,6 +246,7 @@ class AdminController extends Controller
             if($request->password) {
                 $admin->password   = Hash::make($request->password);
             }
+            $admin->role    = 1;
             $admin->save();
             return redirect()->route('user.index')->with(['success' => trans('Admin profile updated', ['module' => 'Admin'])]);
         } catch (Exception $e) {
@@ -255,29 +260,26 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
-    {
-        return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
-        try {
-            if($admin->organization_id==Helper::$value_zero){
-                $admin->delete();
-                return redirect()->route('admin.admins.index')->with(['success' => trans('message.deleted', ['module' => 'Admin'])]);
-            }
-            return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
-        } catch (Exception $e) {
-            return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
-        }
+   public function destroy(Admin $admin)
+{
+    try {
+        $admin->delete();
+        return redirect()->route('user.index')->with('success', 'Admin deleted successfully.');
+    } catch (\Exception $e) {
+        \Log::error('Admin Delete Failed: '.$e->getMessage());
+        return redirect()->back()->with('error', 'Something went wrong while deleting the admin.');
     }
-    public function removeMulti(Request $request)
-    {
-        try {
-            if($request->selected_id){
-                Admin::whereIn('id', Helper::explodeData($request->selected_id))->whereOrganizationId(Helper::$value_zero)->delete();
-                return redirect()->route('admin.admins.index')->with(['success' => trans('message.deleted', ['module' => 'Admin'])]);
-            } 
-            return redirect()->back()->with(['error' => trans('message.invalid_input_rec')]); 
-        } catch (Exception $e) {
-            return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
-        } 
-    }
+}
+    // public function removeMulti(Request $request)
+    // {
+    //     try {
+    //         if($request->selected_id){
+    //             Admin::whereIn('id', Helper::explodeData($request->selected_id))->whereOrganizationId(Helper::$value_zero)->delete();
+    //             return redirect()->route('admin.admins.index')->with(['success' => trans('message.deleted', ['module' => 'Admin'])]);
+    //         } 
+    //         return redirect()->back()->with(['error' => trans('message.invalid_input_rec')]); 
+    //     } catch (Exception $e) {
+    //         return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
+    //     } 
+    // }
 }

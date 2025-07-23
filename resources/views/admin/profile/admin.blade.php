@@ -22,17 +22,17 @@
                              
 
 								{{-- Form for creating a new admin --}}
-								<form action="{{ $admin->id ? route('user.update', $admin->id) : route('user.store') }}" class="p-3 modal-form" method="POST" autocomplete="off">
-								@if($admin->id)
-								@method('PUT')
-								@endif
+								<form action="{{ isset($admin) ? route('user.update', $admin->id) : route('user.store') }}" class="p-3 modal-form" method="POST" autocomplete="off">
+								@if(isset($admin))
+                                  @method('PUT')
+                                @endif
                                     @csrf {{-- CSRF token for security --}}
 
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">First Name <span class="asterisk">*</span></label>
-                                                <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" value="{{old('first_name', $admin->first_name)}}" name="first_name" placeholder="Enter First Name" required>
+                                                <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" value="{{ old('first_name', isset($admin) ? $admin->first_name : '') }}" name="first_name" placeholder="Enter First Name" required>
                                                 @error('first_name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -42,7 +42,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Last Name<span class="asterisk">*</span></label>
-                                                <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Enter Last Name" required>
+                                                <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" value="{{ old('last_name', $admin->last_name ?? '') }}"  placeholder="Enter Last Name" required>
                                                 @error('last_name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -52,7 +52,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Staff Email<span class="asterisk">*</span></label>
-                                                <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" name="email" placeholder="Enter Email" required>
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $admin->email ?? '') }}" id="email" name="email" placeholder="Enter Email" required>
                                                 @error('email')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -62,7 +62,7 @@
                                         <div class="form-group col-md-6 col-sm-6">
                                             <div class="mb-3">
                                                 <label for="username">Username</label> {{-- Username is nullable in controller validation --}}
-                                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ old('username') }}" name="username" placeholder="Enter Username">
+                                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ old('username', $admin->username ?? '') }}" name="username" placeholder="Enter Username">
                                                 @error('username')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
