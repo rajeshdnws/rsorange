@@ -10,15 +10,15 @@
                 <!-- Basic Layout -->
                 <div class="col-xxl">
                   <div class="card mb-12">
-                    <!-- <div class="card-header d-flex align-items-center justify-content-between">
+                    <div class="card-header d-flex align-items-center justify-content-between">
                     @include('admin.layouts.partials.messages')
 					  
-                    </div> -->
+                    </div>
 				
 			     <div class="card">
                     <div class="d-flex justify-content-between align-items-center rounded-top bg-list-header">
                       <h4 class="mb-0 card-header text-dark">Admin user List</h4>
-                      <a class="btn fs-5 p-0 mx-2" href="{{ route('create.admin') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-html="true" data-bs-original-title="Add New Admin">
+                      <a class="btn fs-5 p-0 mx-2" href="{{ route('user.create') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-html="true" data-bs-original-title="Add New Admin">
                         <i class="bi bi-person-add fs-3 text-dark"></i>
                     </a>
                     </div>
@@ -51,9 +51,10 @@
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                              >
+                              <a class="dropdown-item" href="{{ route('user.edit', $admin->id) }}"
+                                ><i class="bx bx-edit-alt me-1"></i> Edit</a>
+							  
+							   
                               <a class="dropdown-item" href="javascript:void(0);"
                                 ><i class="bx bx-trash me-1"></i> Delete</a
                               >

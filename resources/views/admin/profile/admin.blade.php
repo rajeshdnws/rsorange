@@ -19,43 +19,20 @@
                                  fw-normal">Create New User</span>
                             </div>
                             <div>
-                                {{-- Display success message --}}
-                                @if (session('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ session('success') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-                                @endif
+                             
 
-                                {{-- Display error message --}}
-                                @if (session('error'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ session('error') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-                                @endif
-
-                                {{-- Display validation errors --}}
-                                @if ($errors->any())
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-                                @endif
-
-                                {{-- Form for creating a new admin --}}
-                                <form action="{{ route('create.admin') }}" class="p-3 modal-form" method="POST" autocomplete="off">
+								{{-- Form for creating a new admin --}}
+								<form action="{{ $admin->id ? route('user.update', $admin->id) : route('user.store') }}" class="p-3 modal-form" method="POST" autocomplete="off">
+								@if($admin->id)
+								@method('PUT')
+								@endif
                                     @csrf {{-- CSRF token for security --}}
 
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">First Name <span class="asterisk">*</span></label>
-                                                <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" value="{{ old('first_name') }}" name="first_name" placeholder="Enter First Name" required>
+                                                <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" value="{{old('first_name', $admin->first_name)}}" name="first_name" placeholder="Enter First Name" required>
                                                 @error('first_name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror

@@ -157,8 +157,8 @@ class AdminController extends Controller
         $request->validate([
             'first_name'            => 'required|max:50',
 	        'last_name'             => 'required|max:50',
-            'email'                 => 'required|max:100|email|unique:admins,email,NULL,id,organization_id,'.Helper::$value_zero.'|'.Helper::$emailRegex,
-            'username'              => 'nullable|max:100|unique:admins,username,NULL,id,organization_id,'.Helper::$value_zero,
+            'email'                 => 'required|max:100|email|unique:admins,email',
+            'username'              => 'nullable|max:100|unique:admins,username',
             'password'              => 'required|min:6|same:password_confirmation',
             'password_confirmation' => 'required|min:6',
         ], [],[
@@ -167,7 +167,7 @@ class AdminController extends Controller
         ]);
         try {
             // Create New Admin
-            $role  = Role::select(['id'])->where(['name' => Helper::$ownerRole])->whereOrganizationId(Helper::$value_zero)->first();
+         
             $admin = new Admin();
             $admin->first_name = $request->first_name;
             $admin->last_name  = $request->last_name;
@@ -175,9 +175,9 @@ class AdminController extends Controller
             $admin->username   = $request->username ?? $request->email;
             $admin->is_active  = $request->is_active;
             $admin->password   = Hash::make($request->password);
-            $admin->role_id    = $role->id;
+            $admin->role    = 1;
             $admin->save();
-            return redirect()->route('admin.admins.index')->with(['success' => trans('message.created', ['module' => 'Admin'])]);
+            return redirect()->route('user.index')->with(['success' => trans('New admin user added', ['module' => 'Admin'])]);
         } catch (Exception $e) {
             return redirect()->back()->withInput()->with(['error' => trans('message.something_wrong')]); 
         }
@@ -200,10 +200,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit($id)
     {
+	
         try {
-            return view('backend.pages.admins.form', compact('admin'));
+			$admin= Admin::whereId($id)->first();
+            return view('admin.profile.admin', compact('admin'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
         }
@@ -222,8 +224,8 @@ class AdminController extends Controller
         $request->validate([
             'first_name'            => 'required|max:50',
             'last_name'             => 'required|max:50',
-            'email'                 => 'required|max:100|email|unique:admins,email,'.$admin->id.',id,organization_id,'.Helper::$value_zero.'|'.Helper::$emailRegex,
-            'username'              => 'required|max:100|unique:admins,username,'.$admin->id.',id,organization_id,'.Helper::$value_zero,
+            'email'                 => 'required|max:100|unique:admins,email,'.$admin->id.',id',
+            'username'              => 'required|max:100|unique:admins,username,'.$admin->id.',id',
             'password'              => 'nullable|min:6|same:password_confirmation',
             'password_confirmation' => 'nullable|min:6',
         ], [],[
@@ -231,9 +233,7 @@ class AdminController extends Controller
         ]);
 
         try {
-            if($request->is_active==Helper::$status_no && $admin->id==Helper::getSessionData()->id){
-                return redirect()->back()->withInput()->with(['error' => trans('message.self_inactive')]);
-            }
+           
             $admin->first_name = $request->first_name;
             $admin->last_name  = $request->last_name;
             $admin->email      = $request->email;
@@ -243,7 +243,7 @@ class AdminController extends Controller
                 $admin->password   = Hash::make($request->password);
             }
             $admin->save();
-            return redirect()->route('admin.admins.index')->with(['success' => trans('message.updated', ['module' => 'Admin'])]);
+            return redirect()->route('user.index')->with(['success' => trans('Admin profile updated', ['module' => 'Admin'])]);
         } catch (Exception $e) {
             return redirect()->back()->withInput()->with(['error' => trans('message.something_wrong')]); 
         }
