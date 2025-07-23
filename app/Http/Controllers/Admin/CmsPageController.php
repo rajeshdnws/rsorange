@@ -1,7 +1,12 @@
 <?php
 
+<<<<<<< HEAD
 namespace App\Http\Controllers;
 namespace App\Http\Controllers\Admin;
+=======
+namespace App\Http\Controllers\Admin;
+
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +24,11 @@ class CmsPageController extends Controller
     public function index()
     {
          $pages = CmsPage::latest()->get();
+<<<<<<< HEAD
     return view('cms.index', compact('pages'));
+=======
+    return view('admin.cms.index', compact('pages'));
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
     }
 
     /**
@@ -27,7 +36,11 @@ class CmsPageController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
                 return view('cms.create');
+=======
+        return view('admin.cms.create');
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
 
     }
 
@@ -69,7 +82,11 @@ class CmsPageController extends Controller
     public function edit($id)
     {
          $page = CmsPage::findOrFail($id);
+<<<<<<< HEAD
         return view('cms.edit', compact('page'));
+=======
+        return view('admin.cms.create', compact('page'));
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
     }
 
     /**

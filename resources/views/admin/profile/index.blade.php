@@ -23,8 +23,13 @@
                     </a>
                     </div>
                 <div class="table-responsive user-list text-nowrap">
+<<<<<<< HEAD
                   <table class="table cms-table-header">
                     <thead class="table-dark">
+=======
+                  <table class="table">
+                    <thead class="table-light">
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
                       <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -34,7 +39,11 @@
                         <th>Actions</th>
                       </tr>
                     </thead>
+<<<<<<< HEAD
                     <tbody>
+=======
+                    <tbody class="table-border-bottom-0">
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
                       @foreach($admins as $admin)
                       <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$admin->first_name}}</strong></td>
@@ -55,7 +64,11 @@
                                 ><i class="bx bx-edit-alt me-1"></i> Edit</a>
 							  
 							   
+<<<<<<< HEAD
                               <a class="dropdown-item" href="javascript:void(0);"
+=======
+                              <a class="dropdown-item" href="{{ route('user.destroy', $admin->id) }}"
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
                                 ><i class="bx bx-trash me-1"></i> Delete</a
                               >
                             </div>

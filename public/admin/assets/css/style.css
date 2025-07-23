@@ -1,10 +1,17 @@
 .user-list{
       height: 550px;
 }
+
 /* .user-list .table-light tr th, tbody tr td{
     text-align: center;
     padding: 1rem;
 } */
+
+.user-list .table-light tr th, tbody tr td{
+    text-align: center;
+    padding: 1rem;
+}
+
 .card-header {
     padding: 1.1rem 1.1rem;
 }
@@ -38,6 +45,7 @@
 .add-page:hover {
   background-color: #faa85c;
 }
+<<<<<<< HEAD
 .cms-table-header tr th{
     color: #eff4f8 !important;
     font-weight: bold;
@@ -48,3 +56,11 @@
     font-weight: bold;
     text-align: center;
 }
+=======
+.cms-table-header tr th, tbody tr td {
+    color: #eff4f8 !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9

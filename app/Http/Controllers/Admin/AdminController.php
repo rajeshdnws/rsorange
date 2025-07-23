@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\Helper;
 use App\Models\Admin;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
 class AdminController extends Controller
 {
     public function dashboard()
@@ -138,8 +142,15 @@ class AdminController extends Controller
     public function create()
     {   
         try {
+<<<<<<< HEAD
              $admins = admin::all();
             return view('admin.profile.admin', compact('admins'));
+=======
+
+             $admins = admin::all();
+             $admin = null;
+            return view('admin.profile.admin', compact('admins','admin'));
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
         }
@@ -189,9 +200,15 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function show(Module $admin)
     {
         return redirect()->back()->with(['error' => trans('message.something_wrong')]);
+=======
+    public function show(Admin $admin)
+    {
+        return redirect()->back()->with(['error' => trans('Something wents wrong')]);
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
     }
 
     /**
@@ -205,9 +222,16 @@ class AdminController extends Controller
 	
         try {
 			$admin= Admin::whereId($id)->first();
+<<<<<<< HEAD
             return view('admin.profile.admin', compact('admin'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
+=======
+
+            return view('admin.profile.admin', compact('admin'));
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => trans('Something wents wrong')]); 
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
         }
     }
 
@@ -242,6 +266,10 @@ class AdminController extends Controller
             if($request->password) {
                 $admin->password   = Hash::make($request->password);
             }
+<<<<<<< HEAD
+=======
+            $admin->role    = 1;
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
             $admin->save();
             return redirect()->route('user.index')->with(['success' => trans('Admin profile updated', ['module' => 'Admin'])]);
         } catch (Exception $e) {
@@ -255,6 +283,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function destroy(Admin $admin)
     {
         return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
@@ -281,3 +310,28 @@ class AdminController extends Controller
         } 
     }
 }
+=======
+   public function destroy(Admin $admin)
+{
+    try {
+        $admin->delete();
+        return redirect()->route('user.index')->with('success', 'Admin deleted successfully.');
+    } catch (\Exception $e) {
+        \Log::error('Admin Delete Failed: '.$e->getMessage());
+        return redirect()->back()->with('error', 'Something went wrong while deleting the admin.');
+    }
+}
+    // public function removeMulti(Request $request)
+    // {
+    //     try {
+    //         if($request->selected_id){
+    //             Admin::whereIn('id', Helper::explodeData($request->selected_id))->whereOrganizationId(Helper::$value_zero)->delete();
+    //             return redirect()->route('admin.admins.index')->with(['success' => trans('message.deleted', ['module' => 'Admin'])]);
+    //         } 
+    //         return redirect()->back()->with(['error' => trans('message.invalid_input_rec')]); 
+    //     } catch (Exception $e) {
+    //         return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
+    //     } 
+    // }
+}
+>>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
