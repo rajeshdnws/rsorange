@@ -12,8 +12,8 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
      <div class="table-responsive rounded shadow">
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark cms-table-header">
+    <table class="table table-bordered table-striped cms-table-header">
+        <thead class="table-dark">
             <tr>
                 <th>#</th>
                 <th>Title</th>

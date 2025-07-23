@@ -61,7 +61,7 @@
 
             <li class="menu-item has-sub">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="bi bi-building-gear menu-icon"></i>
                 <div data-i18n="Layouts">CMS</div>
               </a>
 

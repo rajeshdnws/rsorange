@@ -1,10 +1,10 @@
 .user-list{
       height: 550px;
 }
-.user-list .table-light tr th, tbody tr td{
+/* .user-list .table-light tr th, tbody tr td{
     text-align: center;
     padding: 1rem;
-}
+} */
 .card-header {
     padding: 1.1rem 1.1rem;
 }
@@ -38,8 +38,13 @@
 .add-page:hover {
   background-color: #faa85c;
 }
-.cms-table-header tr th, tbody tr td {
+.cms-table-header tr th{
     color: #eff4f8 !important;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+}
+.cms-table-header tbody tr td {
     font-weight: bold;
     text-align: center;
 }

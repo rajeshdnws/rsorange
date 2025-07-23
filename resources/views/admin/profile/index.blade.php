@@ -23,8 +23,8 @@
                     </a>
                     </div>
                 <div class="table-responsive user-list text-nowrap">
-                  <table class="table">
-                    <thead class="table-light">
+                  <table class="table cms-table-header">
+                    <thead class="table-dark">
                       <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -34,7 +34,7 @@
                         <th>Actions</th>
                       </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0">
+                    <tbody>
                       @foreach($admins as $admin)
                       <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$admin->first_name}}</strong></td>
