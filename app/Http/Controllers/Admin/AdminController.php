@@ -12,8 +12,6 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-          $admins = admin::all();
-
     return view('admin.profile.dashboard', compact('admins'));
     }
     public function editPassword(Request $request)
@@ -138,7 +136,6 @@ class AdminController extends Controller
     public function create()
     {   
         try {
-             $admins = admin::all();
             return view('admin.profile.admin', compact('admins'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
@@ -265,7 +262,7 @@ class AdminController extends Controller
         return redirect()->back()->with('error', 'Something went wrong while deleting the admin.');
     }
     }
-   
+
 }
 
 
