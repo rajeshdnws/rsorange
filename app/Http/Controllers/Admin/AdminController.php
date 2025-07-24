@@ -12,7 +12,9 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-    return view('admin.profile.dashboard', compact('admins'));
+
+
+    return view('admin.profile.dashboard');
     }
     public function editPassword(Request $request)
     {
