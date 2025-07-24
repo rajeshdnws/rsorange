@@ -139,7 +139,8 @@
             @error('meta_keyword') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
-</div>
+    </div>
+
 
                         <div class="text-end">
                             <a class="btn btn-secondary me-2" href="{{ route('cms-pages.index') }}">Cancel</a>
@@ -151,6 +152,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 
