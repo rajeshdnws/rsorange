@@ -10,26 +10,22 @@
                 <!-- Basic Layout -->
                 <div class="col-xxl">
                   <div class="card mb-12">
-                    <div class="card-header d-flex align-items-center justify-content-between">
+                    <div class="card-header d-flex align-items-center justify-content-between py-2">
                     @include('admin.layouts.partials.messages')
 					  
                     </div>
 				
 			     <div class="card">
-                    <div class="d-flex justify-content-between align-items-center rounded-top bg-list-header">
-                      <h4 class="mb-0 card-header text-dark">Admin user List</h4>
+                    <div class="d-flex justify-content-between align-items-center rounded-top bg-list-header bg-orenge">
+                      <h4 class="mb-0 card-header text-white">Admin user List</h4>
                       <a class="btn fs-5 p-0 mx-2" href="{{ route('user.create') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-html="true" data-bs-original-title="Add New Admin">
-                        <i class="bi bi-person-add fs-3 text-dark"></i>
+                        <i class="bi bi-person-add fs-2 text-white"></i>
                     </a>
                     </div>
                 <div class="table-responsive user-list text-nowrap">
-<<<<<<< HEAD
-                  <table class="table cms-table-header">
-                    <thead class="table-dark">
-=======
+
                   <table class="table">
                     <thead class="table-light">
->>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
                       <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -39,11 +35,8 @@
                         <th>Actions</th>
                       </tr>
                     </thead>
-<<<<<<< HEAD
-                    <tbody>
-=======
+
                     <tbody class="table-border-bottom-0">
->>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
                       @foreach($admins as $admin)
                       <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$admin->first_name}}</strong></td>
@@ -62,15 +55,9 @@
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="{{ route('user.edit', $admin->id) }}"
                                 ><i class="bx bx-edit-alt me-1"></i> Edit</a>
-							  
-							   
-<<<<<<< HEAD
-                              <a class="dropdown-item" href="javascript:void(0);"
-=======
+							
                               <a class="dropdown-item" href="{{ route('user.destroy', $admin->id) }}"
->>>>>>> 4e40845893513e35ee56100cc7a5b8d193ad4ca9
-                                ><i class="bx bx-trash me-1"></i> Delete</a
-                              >
+                                ><i class="bx bx-trash me-1"></i> Delete</a>
                             </div>
                           </div>
                         </td>

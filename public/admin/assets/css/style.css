@@ -24,9 +24,6 @@
     cursor: pointer;
     font-size: 18px;
 }
-.bg-list-header{
-        background: antiquewhite;
-}
 .cursor{
        cursor: pointer;
 }
@@ -56,8 +53,13 @@
     text-align: center;
 }
 .cms-table-header tr th, tbody tr td {
-    color: #eff4f8 !important;
     font-weight: bold;
     text-align: center;
 }
+.bg-orenge {
+    background-color: #fb8c24 !important;
+}
 
+.bg-list-header {
+    margin-top: -22px;
+}
