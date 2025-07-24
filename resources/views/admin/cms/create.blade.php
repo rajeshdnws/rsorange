@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-xxl">
             <div class="card mb-4">
-                <div class="card-header bg-orenge">
+                <div class="card-header bg-orenge mb-3">
                     <span class="text-white h5 fw-normal">{{ isset($page) ? 'Edit Page' : 'Create New Page' }}</span>
                 </div>
                 <div class="card-body">
