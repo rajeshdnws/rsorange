@@ -1,7 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +27,7 @@ class CmsPageController extends Controller
      */
     public function create()
     {
-        return view('admin.cms.create');
+                return view('admin.cms.create');
 
     }
 
