@@ -14,8 +14,8 @@
             <div class="card mb-12">
                     <div class="bg-white rounded-1">
                         <div class="card">
-                            <div class="card-header bg-dark">
-                                <span class="text-white h5
+                            <div class="card-header bg-orenge">
+                                <span class="text-white h4
                                  fw-normal">Create New User</span>
                             </div>
                             <div>
