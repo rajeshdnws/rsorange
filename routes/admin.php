@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AuthAdminController;
 use App\Http\Controllers\Admin\CmsPageController; 
+use App\Http\Controllers\Admin\BannerController;
 
 Route::prefix('admin')->group(function(){
 
@@ -20,10 +21,12 @@ Route::group(['middleware' => ['admin']],function(){
    Route::put('profile-setting', [AdminController::class, 'updateProfile'])->name('update.profile');
 
     
-   // Route::get('create-admin', [AdminController::class, 'create'])->name('create.admin');
 
     // ✅ Add this CMS module route 
     Route::resource('cms-pages', CmsPageController::class);
+    Route::resource('banner', BannerController::class);
+    Route::get('banner/{banner}/toggle', [BannerController::class, 'toggleStatus'])->name('banner.toggle');
+
   
 });
 });

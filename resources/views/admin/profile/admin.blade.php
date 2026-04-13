@@ -14,18 +14,20 @@
             <div class="card mb-12">
                     <div class="bg-white rounded-1">
                         <div class="card">
-                            <div class="card-header bg-dark">
-                                <span class="text-white h5
+                            <div class="card-header bg-orenge">
+                                <span class="text-white h4
                                  fw-normal">Create New User</span>
                             </div>
                             <div>
                              
 
 								{{-- Form for creating a new admin --}}
+
 								<form action="{{ isset($admin) ? route('user.update', $admin->id) : route('user.store') }}" class="p-3 modal-form" method="POST" autocomplete="off">
 								@if(isset($admin))
                                   @method('PUT')
                                 @endif
+
                                     @csrf {{-- CSRF token for security --}}
 
                                     <div class="row">

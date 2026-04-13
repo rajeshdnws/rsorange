@@ -192,6 +192,7 @@ submenuItems.forEach(item => {
 });
 
 
+
 // TEXT BOX AREA CODE
   function execCmd(command) {
         document.execCommand(command, false, null);
@@ -205,3 +206,5 @@ submenuItems.forEach(item => {
     document.querySelector('form').addEventListener('submit', function () {
         document.getElementById('content').value = document.getElementById('editor').innerHTML;
     });
+
+

@@ -9,15 +9,18 @@ class CmsPage extends Model
 {
     use HasFactory;
 
-   protected $fillable = [
-    'title',
-    'alias',
-    'status',
-    'banner',
-    'content',
-    'meta_title',
-    'meta_description',
-    'meta_keyword',
-];
+    protected $fillable = [
+        'title',
+        'alias',
+        'status',
+        'banner',
+        'content',
+        'meta_title',
+        'meta_description',
+        'meta_keyword',
+    ];
+
+
+
 }
 

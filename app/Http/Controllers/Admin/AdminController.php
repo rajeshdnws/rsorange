@@ -8,14 +8,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\Helper;
 use App\Models\Admin;
-
 class AdminController extends Controller
 {
     public function dashboard()
     {
-          $admins = admin::all();
 
-    return view('admin.profile.dashboard', compact('admins'));
+
+    return view('admin.profile.dashboard');
     }
     public function editPassword(Request $request)
     {
@@ -139,10 +138,7 @@ class AdminController extends Controller
     public function create()
     {   
         try {
-
-             $admins = admin::all();
-             $admin = null;
-            return view('admin.profile.admin', compact('admins','admin'));
+            return view('admin.profile.admin', compact('admins'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
         }
@@ -208,7 +204,6 @@ class AdminController extends Controller
 	
         try {
 			$admin= Admin::whereId($id)->first();
-
             return view('admin.profile.admin', compact('admin'));
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => trans('Something wents wrong')]); 
@@ -246,7 +241,6 @@ class AdminController extends Controller
             if($request->password) {
                 $admin->password   = Hash::make($request->password);
             }
-            $admin->role    = 1;
             $admin->save();
             return redirect()->route('user.index')->with(['success' => trans('Admin profile updated', ['module' => 'Admin'])]);
         } catch (Exception $e) {
@@ -260,16 +254,20 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function destroy(Admin $admin)
-{
-    try {
+    public function destroy(Admin $admin)
+    {
+       try {
         $admin->delete();
         return redirect()->route('user.index')->with('success', 'Admin deleted successfully.');
     } catch (\Exception $e) {
         \Log::error('Admin Delete Failed: '.$e->getMessage());
         return redirect()->back()->with('error', 'Something went wrong while deleting the admin.');
     }
+    }
+
 }
+
+
     // public function removeMulti(Request $request)
     // {
     //     try {
@@ -282,4 +280,4 @@ class AdminController extends Controller
     //         return redirect()->back()->with(['error' => trans('message.something_wrong')]); 
     //     } 
     // }
-}
+
